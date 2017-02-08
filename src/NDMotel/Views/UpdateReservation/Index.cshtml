@@ -1,0 +1,31 @@
+﻿
+@model NDMotel.Models.ExistingReservation
+@{
+    ViewData["Title"] = "Update Reservation";
+}
+
+<head>
+    <script type="text/javascript">
+    $(function () {
+        $('.date-picker').datepicker();
+    });
+    </script>
+</head>
+
+@using (Html.BeginForm("Update", "UpdateReservation", FormMethod.Post))
+{
+<div>
+    @Html.HiddenFor(model=>model.ReservationID)
+    <label>First Name:</label> <br /> @Html.TextBoxFor(model => model.FirstName)<br />
+    <label>Last Name:</label><br /> @Html.TextBoxFor(model => model.LastName)<br />
+    <label>Address:</label><br /> @Html.TextBoxFor(model => model.Address)<br />
+    <label>ZipCode:</label><br /> @Html.TextBoxFor(model => model.ZipCode)<br />
+    <label>Phone Number:</label><br /> @Html.TextBoxFor(model => model.PhoneNumber)<br />
+     <h2>Please cancel Reservation if you have to change dates for your existing reservation.</h2>
+</div>
+<br />
+ <div>
+        <input type="submit" class="btn btn-primary" value="Update Reservation" name="Modifybtn"/>
+        <input type="submit" class="btn btn-primary" value="Cancel Reservation" name="Modifybtn"/>
+ </div>
+}

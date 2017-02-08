@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model NDMotel.Models.RoomReservation
+
+@{
+var reservationID = ViewData["ReservationID"];
+}
+
+    <h2>Your Reservation is Confirmed!</h2>
+    @*<p>Your Confirmation ID is @Html.LabelFor(model => @model.ID)</p>*@
+
+    <p>Your Confirmation ID is @reservationID</p>
+<p>Please use this Confirmation ID to find, update and cancel your reservation!</p>
+
+   @Html.ActionLink("Click Here to Go back to home page", "Index", "Home")    
+

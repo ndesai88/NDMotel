@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<SelectListItem> list = new List<SelectListItem>();
+    list.Add(new SelectListItem() { Text = "Des Plaines", Value = "Des Plaines" });
+}
+
+<head>
+   <script type="text/javascript">
+    $(function () {
+        $('.date-picker').datepicker();
+    });
+    </script> 
+</head>
+
+
+@*<form asp-controller="AvailableRooms" asp-action="AvailableRooms"></form>*@
+@using (Html.BeginForm("AvailableRooms", "AvailableRooms"))
+{
+    <p>
+        <div>
+            <label> Location: </label> <br /> @Html.DropDownList("Location", list, "select") <br />
+        </div>
+        <div>
+            <br /><label> Check-In Date: </label><br /> @Html.TextBox("BookingStartDate", null, new { @class = "date-picker" }) <br />
+        </div>
+        <div>
+            <br /><label> Check-Out Date: </label><br /> @Html.TextBox("BookingEndDate", null, new { @class = "date-picker" }) <br />
+        </div>
+        <div><br /><label> Number of people including Children</label><br /> @Html.TextBox("numOfPeople")</div><br /> <br />
+        <input type="submit" value="Check Availability" />
+        @*Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />*@
+    </p>
+}
+
+@*<div>
+    <div>
+        <label> Location: </label> @Html.DropDownList("Location", list, "select")
+    </div>
+    <div>
+        <label> Check-In Date: </label> @Html.TextBox("Check-in", "", new  { @class = "date-picker" })
+    </div>
+    <div>
+        <label> Check-Out Date: </label> @Html.TextBox("Check-out", "", new { @class = "date-picker" })
+    </div>
+    <div><label> Number of people including Children</label> @Html.TextBox("numOfPeople")</div>
+    
+    <input type="button" class="btn-outline-primary" value="Check Available Rooms" onclick="@("window.location.href='" + @Url.Action("AvailableRooms", "AvailableRooms") + "'");" />
+    
+
+</div>*@
+

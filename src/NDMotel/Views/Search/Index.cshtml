@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Search Reservation";}
+@using (Html.BeginForm("Index", "UpdateReservation", FormMethod.Post))
+{
+    <div>
+        <b>Search for your reservation:</b> 
+    </div>
+
+    <div>
+         <label>Please enter your reservationID</label><br />
+         @Html.TextBox("reservationID")<br />
+        
+        
+        <input type="submit" value="Search Reservation" />
+    </div>
+}

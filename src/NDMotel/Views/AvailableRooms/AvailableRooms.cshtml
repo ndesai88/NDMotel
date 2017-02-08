@@ -1,0 +1,91 @@
+﻿@model  NDMotel.Models.BookRoom
+
+@{
+    ViewData["Title"] = "Available Rooms";
+}
+
+<h3>Note: </h3>
+<h2 class="alert">Please enter your personal details below before clicking the book button! Thank you for your business.</h2>
+
+@using (Html.BeginForm("Index", "BookRoom", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+
+    <tr>
+        <b>Selected Check-In Date:</b> <td class="text-primary">@Html.DisplayFor(model => model.checkinDate)</td>
+        @Html.HiddenFor(model=>model.checkinDate)
+        <b>Selected Check-Out Date:</b> <td>@Html.DisplayFor(model => model.checkoutDate)</td>
+        @Html.HiddenFor(model => model.checkoutDate)
+        <b>Selected Number of Guests:</b> <td>@Html.DisplayFor(model => model.noofpeope)</td>
+        @Html.HiddenFor(model => model.noofpeope)
+        
+</tr>
+    <br />
+    <table class="table">
+            
+    <thead>
+        <tr>
+            <th colspan="4">
+                @Html.DisplayNameFor(model => model.RoomDetail[0].Name)
+            </th>
+            <th colspan="4">
+                @Html.DisplayNameFor(model => model.RoomDetail[0].Description)
+            </th>
+            <th colspan="4">
+                @Html.DisplayNameFor(model => model.RoomDetail[0].LowestPrice)
+            </th>
+            <th colspan="4"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RoomDetail)
+        {
+            <tr>
+            <td colspan="4">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td colspan="4">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td colspan="4">
+                @Html.DisplayFor(modelItem => item.LowestPrice)
+            </td>
+            <td colspan="4">
+                    
+                <input type="submit" value="@item.Name" class="btn-primary" name="btnbookroom" />
+            </td>
+            </tr>
+        }
+    </tbody>
+
+    </table>
+
+     <div>
+         <div>
+             <label>Please Enter your First Name:</label><br />
+             @Html.EditorFor(model => model.firstName)<br />
+             @Html.ValidationMessageFor(model => model.firstName)
+         </div>
+         <div>
+             <label>Please Enter your Last Name:</label><br />
+              @Html.EditorFor(model => model.lastName)<br />
+              @Html.ValidationMessageFor(model => model.lastName)
+         </div>
+         <div>
+             <label>Please Enter your Full Address:</label><br />
+             @Html.EditorFor(model => model.address)<br />
+             @Html.ValidationMessageFor(model => model.address)
+         </div>
+         <div>
+             <label>Please Enter your ZipCode:</label><br />
+             @Html.EditorFor(model => model.zipcode)<br />
+             @Html.ValidationMessageFor(model => model.zipcode)
+         </div>
+         <div>
+             <label>Please Enter your Phone No:</label><br />
+             @Html.EditorFor(model => model.phoneno)<br />
+             @Html.ValidationMessageFor(model => model.phoneno)
+         </div>
+       </div>
+
+}
